@@ -7,8 +7,18 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
+app.use(express.json());
+
 app.get("/", (req, res) => {
   res.send("Hello World! from vercel");
+});
+
+app.post("/register", (req, res) => {
+  console.log("Request body: ", req.body);
+  return res.status(200).json({
+    message: "User registered successfully",
+    body: req.body,
+  });
 });
 
 app.listen(PORT, () => {
